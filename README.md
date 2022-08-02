@@ -4,25 +4,25 @@ Gatekeeper is a code pathing tool used to roll out new features in production wi
 
 ## Use Cases:
 
--Code path features to turn them off or on in production
--Limited rollout of new features
--A/B testing
--Request feedback on a feature before it is fully baked
--Test a new process with production scale
+- Code path features to turn them off or on in production
+- Limited rollout of new features
+- A/B testing
+- Request feedback on a feature before it is fully baked
+- Test a new process with production scale
 
 ## How to user Gatekeeper
 
--Create a Custom Metadata Gatekeeper__mdt record with a unique name.
--Decide what kind of users you want in your gate.
--Add the gate check to your code.
+- Create a Custom Metadata Gatekeeper__mdt record with a unique name.
+- Decide what kind of users you want in your gate.
+- Add the gate check to your code.
 ```
 GATE__Gatekeeper.check('my_gate_name'); // this returns a boolean
 ```
 
 ## Updates to Gatekeeper
 
--Implement Gatekeeper for javascript LWC
--Add logging for A/B testing and to know when gates fail
+- Implement Gatekeeper for javascript LWC
+- Add logging for A/B testing and to know when gates fail
 
 ## Read All About It
 
