@@ -36,7 +36,7 @@ private class GATE__GatekeeperTests {
     static void testNonActive() {
         System.assertEquals(
             false,
-            GATE__Gatekeeper.check('PIMInactive'),
+            GATE__Gatekeeper.check('Inactive'),
             'Failure in active test'
         );
     }
@@ -45,13 +45,13 @@ private class GATE__GatekeeperTests {
     static void testPercentage() {
         System.assertEquals(
             true,
-            GATE__Gatekeeper.check('PIMPercentage'),
+            GATE__Gatekeeper.check('Percentage'),
             'Failure: 100% test'
         );
 
         System.assertEquals(
             false,
-            GATE__Gatekeeper.check('PIMPercentageZero'),
+            GATE__Gatekeeper.check('PercentageZero'),
             'Failure: 0.0% test'
         );
     }
