@@ -1,32 +1,47 @@
-# Salesforce Gatekeeper
+# Gatekeeper - for Salesforce
 
-Gatekeeper is a code pathing tool used to roll out new features in production with the ability to roll back a feature without a code deploy.
+I spent four years at Meta—well, we called it Facebook then—building internal business applications on the Salesforce.com platform. One internal tool that made a lasting impression on me was Gatekeeper.
+
+Gatekeeper is what Facebook used (and likely still uses) to control how new features are deployed to production. It allowed teams to gradually roll out changes, perform A/B testing, and roll back features instantly—without requiring a code deployment. That level of deployment control is something I’ve always felt was missing on the Salesforce platform.
+
+So I built Gatekeeper for Salesforce—a simple but powerful feature flagging and code pathing framework tailored for Salesforce environments.
 
 ## Use Cases:
 
-- Code path features to turn them off or on in production
-- Limited rollout of new features
-- A/B testing
-- Request feedback on a feature before it is fully baked
-- Test a new process with production scale
+- Toggle new features on or off in any Salesforce org.
+- Roll out features to a subset of users based on profile, role, username, or percentage of total users.
+- Perform safe A/B testing of logic paths.
+- Let individual users test a feature before full rollout.
+- Validate new processes at production scale—without exposing them to everyone.
 
 ## How to user Gatekeeper
 
-- Create a Custom Metadata Gatekeeper__mdt record with a unique name.
-- Decide what kind of users you want in your gate.
-- Add the gate check to your code.
+### 1. Deploy the Code
+Copy the Gatekeeper classes into your SFDX project. (If enough people are interested, I’ll publish it as a managed package.)
+
+### 2. Create a Gate
+Add a record in the Custom Metadata Type: GATE__Gatekeeper__mdt. Use a unique name like my_new_feature.
+
+### 3. Define Your Access Rules
+Populate any combination of the following fields on the record:
+- Username
+- Profile
+- Role
+- Percentage
+
+Set the record as Active.
+
+### 4. Use the Gate in Your Code
+Example:
 ```
-GATE__Gatekeeper.check('my_gate_name'); // this returns a boolean
+if (GATE__Gatekeeper.check('my_new_feature)) {
+    NewCustomApexClass.newFeatureMethod(Trigger.new);
+} else {
+    OldCustomApexClass.oldFeatureMethod(Trigger.new);
+}
 ```
 
-## Updates to Gatekeeper
+## A Note from the Author
+If you made it to the end of this README—thank you! I’ve sat on this repo for three years, even though I use this code every day at work. Updating this README in July 2025 is part of my New Year’s resolution to contribute more and share the tools I believe in.
 
-- Implement Gatekeeper for javascript LWC
-- Add logging for A/B testing and to know when gates fail
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+If you find Gatekeeper useful, please ⭐️ the repo, file issues, or contribute improvements. Feedback is always welcome!
