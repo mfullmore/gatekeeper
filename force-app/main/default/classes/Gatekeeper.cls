@@ -8,26 +8,26 @@
  * @author mike.542@gmail.com
  */
 
-public without sharing class GATE__Gatekeeper {
+public without sharing class Gatekeeper {
 
     public static Gatekeeper staticGate { get; private set; }
 
     private Map<String, Gatekeeper__mdt> gatekeeperMap { get; set; }
 
-    public GATE__Gatekeeper() {
+    public Gatekeeper() {
         this.gatekeeperMap = Gatekeeper__mdt.getAll();
     }
 
     public static Boolean check(String pName) {
-        if (GATE__Gatekeeper.staticGate == null) {
-            GATE__Gatekeeper.staticGate = new GATE__Gatekeeper();
+        if (Gatekeeper.staticGate == null) {
+            Gatekeeper.staticGate = new Gatekeeper();
         }
 
-        return GATE__Gatekeeper.check(pName, GATE__Gatekeeper.staticGate);
+        return Gatekeeper.check(pName, Gatekeeper.staticGate);
     }
 
-    private static Boolean check(String pName, GATE__Gatekeeper pGateObj) {
-        GATE__Gatekeeper__mdt gate;
+    private static Boolean check(String pName, Gatekeeper pGateObj) {
+        Gatekeeper__mdt gate;
 
         if (pName == null || pName == '') {
             return false;
@@ -43,9 +43,9 @@ public without sharing class GATE__Gatekeeper {
             return false;
         }
 
-        if (GATE__Gatekeeper.isInUsernames(gate.Usernames__c)) {
+        if (Gatekeeper.isInUsernames(gate.Usernames__c)) {
             return true;
-        } else if (GATE__Gatekeeper.isInPercentage(gate.Percentage__c, pGateObj)) {
+        } else if (Gatekeeper.isInPercentage(gate.Percentage__c, pGateObj)) {
             return true;
         } else {
             return false;
@@ -72,7 +72,7 @@ public without sharing class GATE__Gatekeeper {
 
     private static Boolean isInPercentage(
         Decimal pPercentage,
-        GATE__Gatekeeper pGateObj
+        Gatekeeper pGateObj
     ) {
         Integer randomNumber = Integer.valueof((Math.random() * 100));
 

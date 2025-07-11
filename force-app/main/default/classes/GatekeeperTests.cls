@@ -6,19 +6,19 @@
  */
 
 @isTest
-private class GATE__GatekeeperTests {
+private class GatekeeperTests {
 
     @isTest
     static void testNullName() {
         System.assertEquals(
             false,
-            GATE__Gatekeeper.check(null),
+            Gatekeeper.check(null),
             'Failure null check'
         );
 
         System.assertEquals(
             false,
-            GATE__Gatekeeper.check(''),
+            Gatekeeper.check(''),
             'Failure empty string check'
         );
     }
@@ -27,7 +27,7 @@ private class GATE__GatekeeperTests {
     static void testNotThere() {
         System.assertEquals(
             false,
-            GATE__Gatekeeper.check('never_call_your_feature_this_test'),
+            Gatekeeper.check('never_call_your_feature_this_test'),
             'Failure name not there test'
         );
     }
@@ -36,7 +36,7 @@ private class GATE__GatekeeperTests {
     static void testNonActive() {
         System.assertEquals(
             false,
-            GATE__Gatekeeper.check('Inactive'),
+            Gatekeeper.check('Inactive'),
             'Failure in active test'
         );
     }
@@ -45,13 +45,13 @@ private class GATE__GatekeeperTests {
     static void testPercentage() {
         System.assertEquals(
             true,
-            GATE__Gatekeeper.check('Percentage'),
+            Gatekeeper.check('Percentage'),
             'Failure: 100% test'
         );
 
         System.assertEquals(
             false,
-            GATE__Gatekeeper.check('PercentageZero'),
+            Gatekeeper.check('PercentageZero'),
             'Failure: 0.0% test'
         );
     }
