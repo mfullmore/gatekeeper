@@ -3,10 +3,22 @@
     {
       "path": "force-app",
       "default": true
+    },
+    {
+      "versionName": "ver 1.0",
+      "versionNumber": "1.0.0.NEXT",
+      "path": "./force-app",
+      "default": false,
+      "package": "Gatekeeper",
+      "versionDescription": ""
     }
   ],
   "name": "gatekeeper",
   "namespace": "gate",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "63.0"
+  "sourceApiVersion": "63.0",
+  "packageAliases": {
+    "Gatekeeper": "0Hoak0000000fuPCAQ",
+    "Gatekeeper@1.0.0-2": "04tak000000983BAAQ"
+  }
 }

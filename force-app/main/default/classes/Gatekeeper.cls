@@ -8,17 +8,17 @@
  * @author mike.542@gmail.com
  */
 
-public without sharing class Gatekeeper {
+global without sharing class Gatekeeper {
 
     public static Gatekeeper staticGate { get; private set; }
 
     private Map<String, Gatekeeper__mdt> gatekeeperMap { get; set; }
 
-    public Gatekeeper() {
+    global Gatekeeper() {
         this.gatekeeperMap = Gatekeeper__mdt.getAll();
     }
 
-    public static Boolean check(String pName) {
+    global static Boolean check(String pName) {
         if (Gatekeeper.staticGate == null) {
             Gatekeeper.staticGate = new Gatekeeper();
         }
